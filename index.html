@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrasi Seminar Teknologi Nasional</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        footer {
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .card {
+            margin-top: 20px;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -250px;
+            width: 250px;
+            height: 100%;
+            background-color: #343a40;
+            padding-top: 20px;
+            transition: 0.3s;
+            z-index: 1000;
+        }
+
+        .sidebar a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            display: block;
+        }
+
+        .sidebar a:hover {
+            background-color: #0d0de8;
+        }
+
+        .sidebar .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 30px;
+            cursor: pointer;
+            color: white;
+        }
+
+        /* Overlay */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        /* Menu button */
+        .menu-btn {
+            font-size: 30px;
+            cursor: pointer;
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 1001;
+            background-color: #090def;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Tombol Menu -->
+    <div class="menu-btn" id="menuBtn">☰</div>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <span class="close-btn" id="closeBtn">&times;</span>
+        <a href="#">Beranda</a>
+        <a href="#">Tentang</a>
+        <a href="#">Layanan</a>
+        <a href="#">Kontak</a>
+    </div>
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
+
+    <header>
+        <h1>IT PNM Summit</h1>
+        <p>Registrasi Seminar Teknologi Nasional</p>
+    </header>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Form Registrasi</h5>
+                        <form id="registrationForm">
+                            <div class="form-group">
+                                <label for="name">Nama Lengkap</label>
+                                <input type="text" class="form-control" id="name" placeholder="Masukkan nama lengkap" required>
+                                <div class="invalid-feedback" id="nameError"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" class="form-control" id="email" placeholder="Masukkan email" required>
+                                <div class="invalid-feedback" id="emailError"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control" id="password" placeholder="Masukkan password" required>
+                                <div class="invalid-feedback" id="passwordError"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="confirmPassword">Konfirmasi Password</label>
+                                <input type="password" class="form-control" id="confirmPassword" placeholder="Konfirmasi password" required>
+                                <div class="invalid-feedback" id="confirmPasswordError"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="dob">Tanggal Lahir</label>
+                                <input type="date" class="form-control" id="dob" required>
+                                <div class="invalid-feedback" id="dobError"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Nomor Telepon</label>
+                                <input type="tel" class="form-control" id="phone" placeholder="Masukkan nomor telepon" required>
+                                <div class="invalid-feedback" id="phoneError"></div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Daftar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 IT PNM Summit. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById('menuBtn').addEventListener('click', function() {
+            document.getElementById('sidebar').style.left = '0';
+            document.getElementById('overlay').style.display = 'block';
+            document.getElementById('menuBtn').classList.add('hidden'); // Sembunyikan menu burger
+        });
+
+        function closeSidebar() {
+            document.getElementById('sidebar').style.left = '-250px';
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById('menuBtn').classList.remove('hidden'); // Munculkan menu burger
+        }
+
+        document.getElementById('closeBtn').addEventListener('click', closeSidebar);
+        document.getElementById('overlay').addEventListener('click', closeSidebar);
+    </script>
+
+</body>
+</html>
